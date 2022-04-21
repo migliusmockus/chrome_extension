@@ -14,17 +14,16 @@ else {
     ulEl.innerHTML = "Nothing currently saved" // will just display on the screen for the user that no data is currently saved in the extension
 }
 
-
-saveTabBtn.addEventListener("click", function() {
-    chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
-        console.log(tabs)
-        myDetails.push(tabs[0].url)
-        localStorage.setItem("myDetails", JSON.stringify(myDetails))
-        renderDetails(myDetails)  
+saveTabBtn.addEventListener("click", function() { // when a user clicks on the savetab button we run this function
+    chrome.tabs.query({ active: true, currentWindow: true }, function(tabs) { // here we access the chrome api which is responsible for logging current tab a user is on
+        console.log(tabs) // just logging out to test if everything works
+        myDetails.push(tabs[0].url) // this is where we store everything saved as an url in the extension
+        localStorage.setItem("myDetails", JSON.stringify(myDetails)) // here we just say that local storage will set our items that are in the myDetails array to make them into strings from objects.
+        renderDetails(myDetails) // here we run the renderDetails function and pass in our array as a parameter which the function is going to use to run properly
     })
 })
 
-function renderDetails(details) { // this function is responsible for displaying the items/tasks we wrote in the input field
+function renderTab(details) { // this function is responsible for displaying the items/tasks we wrote in the input field
     let listItems = "" // creating the list which will start empty
     for (let i = 0; i < details.length; i++) { // creating a for loop which will first create a variable "i", make it to zero and check if the length of the items in the "myItems" array that we created on the first, at last the for loop will run as many times as there are items/tasks in our array line of our code,
         // down here the listItems variable we created is then equal to listItems + "<li>" which is an element from html in the "ul" which stands for unordered list, and because later we use the ".innerHTML", the vscode editor understands that we are trying to create "list" and that's why we get the black dot near every element we create
@@ -36,20 +35,20 @@ function renderDetails(details) { // this function is responsible for displaying
             </li>
         `
     }
-    ulEl.innerHTML = listItems  // Here we just call the UlEl variable which can access the unordered list elements and with the "innerHTML" we can display the list items in the unordered list.  
+    ulEl.innerHTML = listItems // Here we just call the UlEl variable which can access the unordered list elements and with the "innerHTML" we can display the list items in the unordered list.  
 }
 
 
 deleteBtn.addEventListener("dblclick", function() {
-    localStorage.clear()
-    myDetails = []
-    ulEl.innerHTML = "Nothing currently saved"
+    localStorage.clear() // here we just clear/delete our local storage so it becomes empty
+    myDetails = [] // i set the array back to empty too, just cleaning local storage won't delete anything located in my array.
+    ulEl.innerHTML = "Nothing currently saved" // we display a simple message that says nothing is currently saved.
 })
 
 deleteLastBtn.addEventListener("click", function() {
     myDetails.pop() // will delete the last element in our array
     localStorage.removeItem(myDetails) // will remove the last saved object from local storage
-    localStorage.setItem("myDetails", JSON.stringify(myDetails)) // will refresh everything that is stored in local storage
+    localStorage.setItem("myDetails", JSON.stringify(myDetails)) // will refresh/update everything that is stored in local storage
     renderTab(myDetails) // will run a function called myDetails
     if (detailsFromLocalStorage) { // an if statement which checks if detailsFromLocalStorage variable has any saved data in myDetails array
         myDetails = detailsFromLocalStorage // if the statement is true, myDetails array is then equal to the detailsFromLocalStorage variable and gets all the saved tasks/data user entered
