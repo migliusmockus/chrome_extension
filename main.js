@@ -46,6 +46,19 @@ deleteBtn.addEventListener("dblclick", function() {
     ulEl.innerHTML = "Nothing currently saved"
 })
 
+deleteLastBtn.addEventListener("click", function() {
+    myDetails.pop() // will delete the last element in our array
+    localStorage.removeItem(myDetails) // will remove the last saved object from local storage
+    localStorage.setItem("myDetails", JSON.stringify(myDetails)) // will refresh everything that is stored in local storage
+    renderTab(myDetails) // will run a function called myDetails
+    if (detailsFromLocalStorage) { // an if statement which checks if detailsFromLocalStorage variable has any saved data in myDetails array
+        myDetails = detailsFromLocalStorage // if the statement is true, myDetails array is then equal to the detailsFromLocalStorage variable and gets all the saved tasks/data user entered
+        renderTab(myDetails) // renderDetails() will run a function called renderTab
+    } else {
+        ulEl.innerHTML = "Nothing currently saved" // will just display on the screen for the user that no data is currently saved in the extension
+    }
+})
+
 inputBtn.addEventListener("click", function() { // an event listener which is gonna listen for clicks on the button, when clicked, it will run a function which 
     myDetails.push(inputEl.value) // will get the item from input list and put it in the empty array that we created, later as we add more items/tasks, the push() function will place our tasks at the end of the array
     inputEl.value = "" // this will reset the input field to be empty so that user doesn't need to erase the field himself when adding another task
