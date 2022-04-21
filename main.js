@@ -3,7 +3,7 @@ const inputEl = document.getElementById("input-el") // creating a variable which
 const inputBtn = document.getElementById("input-btn") // creating a variable which gets the id of the button in the HTML file
 const ulEl = document.getElementById("ul-el") // creating a variable which gets the id of unordered list in the HTML file
 const deleteBtn = document.getElementById("delete-btn") // creating a variable which will be used to delete everything saved in the extension
-const deletelastBtn = document.getElementById("deletelast-btn") // creating a variable which will delete the last item saved in the extension
+const deletelastBtn = document.getElementById("delete-last-btn") // creating a variable which will delete the last item saved in the extension
 
 const detailsFromLocalStorage = JSON.parse(localStorage.getItem("myDetails")) // here i created a variable which will first parse/change our saved tasks/details which are strings because we used stringify() to array objects and retrieve them from local storage so that we could display the tasks
 if(detailsFromLocalStorage) { // an if statement which checks if detailsFromLocalStorage variable has any saved data in myDetails array
