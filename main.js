@@ -38,6 +38,15 @@ function renderTab(details) { // this function is responsible for displaying the
     ulEl.innerHTML = listItems // Here we just call the UlEl variable which can access the unordered list elements and with the "innerHTML" we can display the list items in the unordered list.  
 }
 
+function renderInput(details) { // this function is responsible for displaying the items/tasks we wrote in the input field
+    let items = "" // creating the list which will start empty
+    for (let i = 0; i < details.length; i++) { // creating a for loop which will first create a variable "i", make it to zero and check if the length of the items in the "myItems" array that we created on the first, at last the for loop will run as many times as there are items/tasks in our array line of our code,
+        // down here the listItems variable we created is then equal to listItems + "<li>" which is an element from html in the "ul" which stands for unordered list, and because later we use the ".innerHTML", the vscode editor understands that we are trying to create "list" and that's why we get the black dot near every element we create
+        items += "<li>" + details[i] + "</li>"
+    }
+    ulEl.innerHTML = items // Here we just call the UlEl variable which can access the unordered list elements and with the "innerHTML" we can display the list items in the unordered list.  
+}
+
 
 deleteBtn.addEventListener("dblclick", function() {
     localStorage.clear() // here we just clear/delete our local storage so it becomes empty
