@@ -102,9 +102,10 @@ completeBtn.addEventListener('click', function() {
     message: detailsFromLocalStorage.join('  |------|  ')
   }
   emailjs.init('bvWkuDPpUD2R873g6')
-  emailjs.send("service_yn8unob","template_k3biv1d", tempParams);
+  emailjs.send("service_pxdhwkt","template_v724g0w", tempParams);
   closeModal(modal)
 })
+
 
 
 
