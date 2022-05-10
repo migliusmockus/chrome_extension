@@ -1,12 +1,15 @@
 {
     "manifest_version": 3,
     "version": "1.0",
-    "name": "Detail Tracker",
+    "name": "Detail Tracker_TEST",
     "action": {
         "default_popup": "index.html",
         "default_icon": "icon.png"
     },
-    "permissions": [
+    "permissions":[
         "tabs"
-    ]
+    ],
+    "background": {
+       "service_worker": "main.js"
+    }
 }
