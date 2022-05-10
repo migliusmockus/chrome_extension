@@ -4,7 +4,8 @@ body {
     margin: 0;
     padding: 10px;
     font-family: Arial, Helvetica, sans-serif;
-    min-width: 350px;
+    min-width: 500px;
+    max-width: 500px;
 }
 
 input {
@@ -26,27 +27,43 @@ button {
 button:active {
     transform: scale(0.8);
     box-shadow: 3px 2px 22px 1px rgba(0, 0, 0, 0.98);
-
 }
+
 button:hover {
     background: white;
     color: #5f9341;
     transition: all 0.2s;
 }
+
 #delete-btn {
     background: white;
     color: #5f9341;
 }
+
 #delete-btn:hover {
     background: #5f9341;
     color: white;
 }
 
+#send-btn {
+    background: white;
+    color: #5f9341;
+}
+
+#send-btn:hover {
+    background: #5f9341;
+    color: white;
+}
+
+#complete-el {
+    width: 75%;
+}
 
 ul {
     margin-top: 30px;
     list-style-type: none;
     padding-left: 0;
+    word-wrap: break-word;
 }
 
 li {
@@ -57,5 +74,60 @@ li a {
     color: #5f9341;
 }
 
+*,
+*::after,
+*::before {
+    box-sizing: border-box;
+}
+
+.modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    transition: 200ms ease-in-out;
+    border: 1px solid black;
+    border-radius: 10px;
+    z-index: 10;
+    background-color: white;
+    width: 500px;
+    max-width: 80%;
+}
+
+.modal.active {
+    transform: translate(-50%, -50%) scale(1);
+}
+
+.modal-header {
+    padding: 10px 15px;
+    align-items: center;
+    border-bottom: 1px solid black;
+}
+
+.modal-header .title {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.modal-body {
+    padding: 10px 15px;
+}
+
+#overlay {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    transition: 200ms ease-in-out;
+    pointer-events: none;
+    opacity: 0;
+}
+
+#overlay.active {
+    opacity: 1;
+    pointer-events: all;
+}
 
 
